@@ -170,3 +170,18 @@ select {
     font-size: 17px;
   }
 }
+.btn-excel {
+  background: #28a745;
+  border: none;
+  color: white;
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.btn-excel:hover {
+  opacity: 0.9;
+}

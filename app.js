@@ -127,3 +127,26 @@ clearBtn.addEventListener("click", function () {
 
 // ---------- RENDER INICIAL ----------
 renderHistory();
+// ============================
+// EXPORTAR A EXCEL
+// ============================
+document.getElementById("exportExcel").addEventListener("click", function () {
+    if (expenses.length === 0) {
+        alert("No hay datos en el historial.");
+        return;
+    }
+
+    const data = expenses.map(item => ({
+        Monto: item.amount,
+        Categoria: item.description,
+        Fecha: item.date,
+        "Forma de pago": item.payment,
+        Banco: item.bank
+    }));
+
+    const worksheet = XLSX.utils.json_to_sheet(data);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Historial");
+
+    XLSX.writeFile(workbook, "historial-gastos.xlsx");
+});
