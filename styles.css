@@ -20,6 +20,15 @@ body {
   border-radius: 16px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.app-container {
+  margin: 0 auto;
+}
 
 header {
   display: flex;
@@ -144,4 +153,9 @@ select:focus {
 
 .btn-delete:hover {
   opacity: 0.9;
+}
+
+/* Ajuste para que en iPhone no haga zoom al tocar inputs */
+input, select, button {
+  font-size: 16px;
 }

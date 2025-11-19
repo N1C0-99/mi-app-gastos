@@ -1,7 +1,22 @@
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("sw.js");
+}
+
 // ---------- ELEMENTOS DEL DOM ----------
 const form = document.getElementById("expense-form");
 const historyList = document.getElementById("history-list");
 const clearBtn = document.getElementById("clear-history");
+
+// ---------- FORMATEO AUTOMÁTICO DEL MONTO MIENTRAS SE ESCRIBE ----------
+const amountInput = document.getElementById("amount");
+
+amountInput.addEventListener("input", () => {
+  let value = amountInput.value.replace(/\./g, ""); // quita puntos
+  if (!isNaN(value) && value !== "") {
+    amountInput.value = Number(value).toLocaleString("de-DE");
+  }
+});
+
 
 // ---------- CARGAR DATOS GUARDADOS ----------
 let expenses = [];
@@ -75,7 +90,7 @@ function saveExpenses() {
 form.addEventListener("submit", function (event) {
   event.preventDefault();
 
-  const amount = document.getElementById("amount").value.trim();
+  const amount = document.getElementById("amount").value.replace(/\./g, "");
   const description = document.getElementById("description").value.trim();
   const date = document.getElementById("date").value;
   const payment = document.getElementById("payment").value;
