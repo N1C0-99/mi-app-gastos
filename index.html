@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Control de Gastos</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-container">
+    <header>
+      <span class="logo">💰</span>
+      <h1>Control de Gastos</h1>
+    </header>
+
+    <form id="expense-form">
+
+      <!-- MONTO -->
+      <label for="amount">Monto (Gs.)</label>
+      <div class="amount-wrapper">
+        <span class="currency">Gs.</span>
+        <input type="text" id="amount" placeholder="100.000" required />
+      </div>
+
+      <!-- CATEGORÍA -->
+      <label for="description">Categoría / Detalle</label>
+      <input type="text" id="description" placeholder="combustible, comida..." required />
+
+      <!-- FECHA -->
+      <label for="date">Fecha</label>
+      <input type="date" id="date" required />
+
+      <!-- FORMA PAGO -->
+      <label for="payment">Forma de pago</label>
+      <select id="payment" required>
+        <option value="">Seleccionar...</option>
+        <option>Efectivo</option>
+        <option>Tarjeta crédito</option>
+        <option>Tarjeta débito</option>
+        <option>Transferencia</option>
+        <option>Cheque</option>
+      </select>
+
+      <!-- BANCO -->
+      <label for="bank">Banco</label>
+      <select id="bank" required>
+        <option value="">Seleccionar...</option>
+        <option>BNF</option>
+        <option>Itaú</option>
+        <option>UENO</option>
+      </select>
+
+      <button type="submit" class="btn-guardar">Guardar</button>
+    </form>
+
+    <section class="history-section">
+      <h2 style="display:flex; justify-content:space-between; align-items:center;">
+        Historial
+        <button id="clear-history" class="btn-delete">🗑 Borrar todo</button>
+      </h2>
+
+      <div id="history-list"></div>
+
+    </section>
+  </div>
+
+  <!-- El script SIEMPRE va aquí, al final -->
+  <script src="app.js"></script>
+
+</body>
+</html>
