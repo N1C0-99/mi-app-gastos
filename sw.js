@@ -1,20 +1,14 @@
-self.addEventListener("install", (event) => {
-  event.waitUntil(
-    caches.open("gastos-cache").then((cache) => {
-      return cache.addAll([
-        "index.html",
-        "styles.css",
-        "app.js",
-        "manifest.json"
-      ]);
-    })
-  );
+// Service Worker sin caché para permitir actualizaciones automáticas
+
+self.addEventListener("install", () => {
+  self.skipWaiting();
+});
+
+self.addEventListener("activate", () => {
+  self.clients.claim();
 });
 
 self.addEventListener("fetch", (event) => {
-  event.respondWith(
-    caches.match(event.request).then((response) => {
-      return response || fetch(event.request);
-    })
-  );
+  // siempre devuelve la versión más nueva del servidor
+  event.respondWith(fetch(event.request));
 });
